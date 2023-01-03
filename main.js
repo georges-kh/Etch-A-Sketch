@@ -5,30 +5,48 @@ function canvas() {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
     container.appendChild(pixel);
-    pixel.setAttribute("style", `min-width: ${200/pixelCount}px; min-height: ${200/pixelCount}px`);
+    pixel.setAttribute("style", `width: ${200/pixelCount}px; height: ${200/pixelCount}px`);
   }
 }
 
-function selection() {
-  const options = document.querySelectorAll("buttons");
-  options.forEach((option) => option.addEventListener("click", function() {
-    mode = this.class;
-    return mode;
-  }));
-
-  switch (mode) {
-    case "erase":
-
-  }
-}
 
 function main() {
   canvas();
 
   const dots = document.querySelectorAll(".pixel");
-  dots.forEach((dot) => dot.addEventListener("mouseover", function() {
-    this.setAttribute("style", "background-color: black;");
-  }));
+  dots.forEach((dot) => dot.addEventListener("mouseover", color));
+}
+
+function color() {
+  let color = "black";
+  this.style.background = color;
+
+  const options = document.querySelectorAll("button");
+  options.forEach((option) => option.addEventListener("click", selection));
+
+
+}
+
+function selection() {
+  let mode = this.id;
+  pixels = Array.from(document.getElementsByClassName("pixel"));
+
+  switch (mode) {
+
+    case "clear":
+      pixels.forEach(function(pixel) { pixel.style.background = "white" })
+      break;
+    case "erase":
+      pixels.forEach((pixel) => pixel.addEventListener("mouseover", function() { this.style.background = "white"}));
+      break;
+    case "rainbow":
+      pixels.forEach( (pixel) => pixel.addEventListener("mouseover", function() {
+        let colors = ["black", "silver", "gray", "white", "maroon", "red", "purple", "fuchsia", "green", "lime",
+      "olive", "yellow", "navy", "blue", "teal", "aqua"];
+        this.style.background = colors[Math.floor(Math.random()*colors.length)];
+      }))
+      break;
+  }
 }
 
 main()
