@@ -1,0 +1,17 @@
+.canvas-container {
+  padding: 0;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pixel {
+  border: 1px solid rgba(120, 120, 120, 0.5);
+  box-sizing: border-box;
+  flex-grow: center;
+}
+
+.black {
+  background: black;
+}
