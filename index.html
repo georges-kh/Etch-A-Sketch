@@ -9,16 +9,22 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <div id="div-container">
-    <div id="button-container">
-      <button id="color">Color</button>
-      <button id="gradient">Gradient</button>
-      <button id="erase">Erase</button>
-      <button id="rainbow">Rainbow</button>
-      <button id="clear">Clear</button>
+  <div id="container">
+    <h1>Etch-A-Sketch</h1>
+    <div id="div-container">
+      <div id="button-container">
+        <label for="name">Grid size</label>
+        <input id="size" type="range" name="name" size="5" min="5" max="50">
+        <p id="size-text">Grid size is 33 x 33</p>
+        <button id="color">Color</button>
+        <button id="gradient">Gradient</button>
+        <button id="erase">Erase</button>
+        <button id="rainbow">Rainbow</button>
+        <button id="clear">Clear</button>
+      </div>
+      <div id="canvas-container"></div> 
     </div>
-    <div id="container"></div> 
-  </div>
+    </div>
   </div>
 </body>
 </html>
